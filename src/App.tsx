@@ -58,7 +58,8 @@ function App() {
     <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <div className="w-full px-4 md:max-w-6xl md:mx-auto md:px-6 py-6">
 
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center md:mb-10 mb-7 gap-5">
 
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold">Extensions</h1>
@@ -75,8 +76,8 @@ function App() {
 
           <button
             onClick={() => setDarkMode(prev => !prev)}
-            className="bg-gray-300 dark:bg-gray-700 text-black dark:text-white p-2 rounded-full self-end md:self-auto"
-            title="Toggle light/dark mode"
+            className=" bg-gray-300 dark:bg-gray-700 text-black p-2 rounded-full self-end absolute top-6 md:self-auto md:static"
+            title="Toggle light/dark mode "
           >
             <img
               src={darkMode ? lightIcon : darkIcon}
@@ -86,7 +87,8 @@ function App() {
           </button>
         </div>
 
-        <div className="flex justify-center md:justify-start gap-2 mb-6">
+        {/* Filtered Buttons */}
+        <div className="flex justify-center md:justify-start gap-3 mb-8">
           {(["all", "active", "inactive"] as FilterType[]).map(type => (
             <button
               key={type}
@@ -101,7 +103,8 @@ function App() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Extension Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {filteredExtensions.map(ext => (
             <ExtensionCard
               key={ext.id}

@@ -8,7 +8,7 @@ interface Props {
 
 const ExtensionCard = ({ extension, onToggle, onRemove }: Props) => {
   return (
-    <div className="flex flex-col justify-between rounded-xl p-4 bg-gray-100 dark:bg-gray-800 shadow-md transition-colors duration-300">
+    <div className="flex flex-col justify-between rounded-xl p-4 hover:shadow-sm bg-gray-100 shadow-md dark:bg-gray-800 transition-colors duration-300">
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 rounded-md flex items-center justify-center bg-gray-300 dark:bg-gray-700">
           <img
@@ -29,7 +29,7 @@ const ExtensionCard = ({ extension, onToggle, onRemove }: Props) => {
       <div className="mt-4 flex justify-between items-center">
         <button
           onClick={onRemove}
-          className="px-3 py-1 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-sm rounded-md transition"
+          className="px-3 py-1 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-sm rounded-md transition cursor-pointer"
         >
           Remove
         </button>
