@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 import extensiondata from "../data/data.json"
 import { type ExtensionRaw, type Extension } from "./types/extension"
 import ExtensionCard from "./components/ExtensionCard"
-import darkIcon from "../src/assets/images/icon-moon.svg"
-import lightIcon from "../src/assets/images/icon-sun.svg"
+import darkIcon from "/assets/images/icon-moon.svg"
+import lightIcon from "/assets/images/icon-sun.svg"
 
 type FilterType = "all" | "active" | "inactive"
 
