@@ -25,9 +25,9 @@ function App() {
   useEffect(() => {
     const root = document.documentElement;
     if (darkMode) {
-      root.classList.add("dark");
+      root.classList.add('dark')
     } else {
-      root.classList.remove("dark");
+      root.classList.remove('dark')
     }
   }, [darkMode])
 
