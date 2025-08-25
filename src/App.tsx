@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import extensiondata from "../data/data.json"
-import { type ExtensionRaw, type Extension } from "./types/extension"
+import { type Extension } from "./types/extension"
 import ExtensionCard from "./components/ExtensionCard"
 import darkIcon from "/assets/images/icon-moon.svg"
 import lightIcon from "/assets/images/icon-sun.svg"
+import { supabase } from "./supabaseClient"
 
 type FilterType = "all" | "active" | "inactive"
 
@@ -14,13 +14,18 @@ function App() {
   const [darkMode, setDarkMode] = useState<boolean>(true)
 
   useEffect(() => {
-    const withIds: Extension[] = (extensiondata as ExtensionRaw[]).map(item => ({
-      ...item,
-      id: crypto.randomUUID()
-    }));
-
-    setExtension(withIds)
-  }, []);
+    const fetchExtensions = async () => {
+      const { data, error } = await supabase
+        .from('extensions')
+        .select('*')
+      if (error) {
+        console.log(error)
+      } else {
+        setExtension(data)
+      }
+    }
+    fetchExtensions()
+  }, [])
 
   useEffect(() => {
     const root = document.documentElement;
@@ -31,14 +36,27 @@ function App() {
     }
   }, [darkMode])
 
-  const toggleExtension = (id: string) => {
-    setExtension(prev =>
-      prev.map(ext => ext.id === id ? { ...ext, isActive: !ext.isActive } : ext)
-    );
-  };
+  const toggleExtension = async (id: string, isActive: boolean) => {
+    const { data, error } = await supabase
+      .from('extensions')
+      .update({ isActive: !isActive })
+      .eq('id', id)
+      .select()
+    if (!error && data) {
+      setExtension(prev =>
+        prev.map(ext => ext.id === id ? data[0] : ext)
+      )
+    }
+  }
 
-  const removeExtension = (id: string) => {
-    setExtension(prev => prev.filter(ext => ext.id !== id))
+  const removeExtension = async (id: string) => {
+    const { error } = await supabase
+      .from('extensions')
+      .delete()
+      .eq('id', id)
+    if (!error) {
+      setExtension(prev => prev.filter(ext => ext.id !== id))
+    }
   }
 
   const filteredExtensions = extension.filter(ext => {
@@ -109,7 +127,7 @@ function App() {
             <ExtensionCard
               key={ext.id}
               extension={ext}
-              onToggle={() => toggleExtension(ext.id)}
+              onToggle={() => toggleExtension(ext.id, ext.isActive)}
               onRemove={() => removeExtension(ext.id)}
             />
           ))}
