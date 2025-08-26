@@ -7,14 +7,15 @@ interface Props {
 }
 
 const ExtensionCard = ({ extension, onToggle, onRemove }: Props) => {
+
   return (
     <div className="flex flex-col justify-between rounded-xl p-4 hover:shadow-sm bg-gray-100 shadow-md dark:bg-gray-800 transition-colors duration-300">
       <div className="flex items-start gap-4">
         <div className="p-2 rounded-md flex items-center justify-center bg-gray-300 dark:bg-gray-700">
           <img
             src={extension.logo}
-            alt={`${extension.name} icon`}
-            className="w-12"
+            alt={`icon`}
+            className="w-12 max-w-12  object-contain"
           />
         </div>
 
