@@ -128,7 +128,7 @@ const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormProps) => {
         />
 
         {form?.logoPreviewUrl && <div className="w-full max-h-[300px] mt-3">
-          <img src={form.logoPreviewUrl} className="max-w-70 md:max-w-100" alt="" />
+          <img src={form.logoPreviewUrl} className="max-w-70 md:max-w-70" alt="" />
         </div>}
       </div>
 
