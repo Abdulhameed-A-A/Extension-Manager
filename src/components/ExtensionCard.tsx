@@ -15,7 +15,7 @@ const ExtensionCard = ({ extension, onToggle, onRemove }: Props) => {
           <img
             src={extension.logo}
             alt={`icon`}
-            className="w-5 h-5 min-w-5 min-h-5 rounded-md object-cover"
+            className="w-5 h-5 max-w-5 max-h-5 md:max-w-12 md:max-h-12 md:w-10 md:h-10 rounded-md object-cover"
           />
         </div>
 
