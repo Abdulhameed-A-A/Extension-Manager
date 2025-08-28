@@ -27,7 +27,6 @@ const MainComponent = () => {
     setShowAddForm(false)
   }
 
-
   return (
     <>
       <ExtensionPage
@@ -51,6 +50,5 @@ const MainComponent = () => {
     </>
   )
 }
-
 
 export default MainComponent

@@ -4,7 +4,6 @@ import { type Extension } from "../types/extension"
 import { getPublicUrl, uploadFile } from "../services/uploads"
 import toast from 'react-hot-toast'
 
-
 interface AddExtensionFormany {
   onAdded: (newExtension: Extension) => void
   onCancel: () => void

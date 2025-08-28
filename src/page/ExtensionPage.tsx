@@ -5,7 +5,6 @@ import FilteredButton from "../components/FilteredButtons"
 import type { FilterType } from "../types/extension"
 import { type Extension } from "../types/extension"
 
-
 const ExtensionPage = ({
   extension,
   setExtension,

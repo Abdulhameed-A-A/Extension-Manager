@@ -9,7 +9,6 @@ export const uploadFile = async (filePath: string, file: File, bucket: string): 
   return data.path
 }
 
-
 export const getPublicUrl = async (filePath: string, bucket = "Images") => {
   const { data } = await supabase.storage
     .from(bucket)
