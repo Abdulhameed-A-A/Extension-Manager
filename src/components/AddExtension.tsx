@@ -120,7 +120,7 @@ const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormType) => {
           type="file"
           name="logo"
           onChange={handleChange}
-          className="w-full px-3 py-3 text-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-white"
+          className="w-full px-3 py-3 cursor-pointer text-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-white"
           required
         />
 
