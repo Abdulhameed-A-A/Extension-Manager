@@ -1,9 +1,10 @@
+import type { Dispatch, SetStateAction } from "react";
 import { supabase } from "../services/supabaseClient";
 import { type Extension } from "../types/extension";
 
 interface ExtensionCardProp {
   extension: Extension;
-  setExtension?: any
+  setExtension: Dispatch<SetStateAction<Extension[]>>
 }
 
 const ExtensionCard = ({ extension, setExtension }: ExtensionCardProp) => {

@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import darkIcon from "/assets/images/icon-moon.svg"
 import lightIcon from "/assets/images/icon-sun.svg"
 
-const ExtensionHeader = ({ searchTerm, setSearchTerm }: any) => {
+interface ExtensionHeaderPropsType {
+  searchTerm: string,
+  setSearchTerm: Dispatch<SetStateAction<string>>
+}
+
+const ExtensionHeader = ({ searchTerm, setSearchTerm }: ExtensionHeaderPropsType) => {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem("darkMode");
     return saved !== null ? JSON.parse(saved) : true;

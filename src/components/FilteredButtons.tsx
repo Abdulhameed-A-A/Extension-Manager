@@ -1,9 +1,14 @@
-// import { useState } from "react"
+import type { Dispatch, SetStateAction } from "react"
 import { type FilterType } from "../types/extension"
 
-const FilteredButton = ({ filter, setFilter, showAddForm, setShowAddForm }: any) => {
+interface FilteredButtonPropsType {
+  filter: FilterType,
+  setFilter: Dispatch<SetStateAction<FilterType>>,
+  showAddForm: boolean,
+  setShowAddForm: Dispatch<SetStateAction<boolean>>
+}
 
-
+const FilteredButton = ({ filter, setFilter, showAddForm, setShowAddForm }: FilteredButtonPropsType) => {
   return (
     <div className="flex justify-center md:justify-start gap-3 mb-8">
       {(["all", "active", "inactive"] as FilterType[]).map(type => (

@@ -1,16 +1,23 @@
-import { useState } from "react"
+import { useState, type Dispatch, type SetStateAction } from "react"
 import ExtensionCard from "../components/ExtensionCard"
 import ExtensionHeader from "../components/ExtensionHeader"
 import FilteredButton from "../components/FilteredButtons"
 import type { FilterType } from "../types/extension"
 import { type Extension } from "../types/extension"
 
+interface ExtensionPageProps {
+  extension: Extension[],
+  setExtension: Dispatch<SetStateAction<Extension[]>>,
+  showAddForm: boolean,
+  setShowAddForm: Dispatch<SetStateAction<boolean>>
+}
+
 const ExtensionPage = ({
   extension,
   setExtension,
   showAddForm,
   setShowAddForm,
-}: any) => {
+}: ExtensionPageProps) => {
   const [searchTerm, setSearchTerm] = useState<string>("")
   const [filter, setFilter] = useState<FilterType>("all")
 
