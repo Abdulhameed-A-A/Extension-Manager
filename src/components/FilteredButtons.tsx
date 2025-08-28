@@ -1,7 +1,7 @@
 // import { useState } from "react"
 import { type FilterType } from "../types/extension"
 
-const FilteredButton = ({filter, setFilter, showAddForm, setShowAddForm}: any) => {
+const FilteredButton = ({ filter, setFilter, showAddForm, setShowAddForm }: any) => {
 
 
   return (

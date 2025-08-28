@@ -4,7 +4,7 @@ import ExtensionHeader from "../components/ExtensionHeader"
 import FilteredButton from "../components/FilteredButtons"
 import type { FilterType } from "../types/extension"
 import { type Extension } from "../types/extension"
-import { supabase } from "../services/supabaseClient"
+
 
 const ExtensionPage = ({
   extension,
@@ -14,29 +14,6 @@ const ExtensionPage = ({
 }: any) => {
   const [searchTerm, setSearchTerm] = useState<string>("")
   const [filter, setFilter] = useState<FilterType>("all")
-
-  const toggleExtension = async (id: string, isActive: boolean) => {
-    const { data, error } = await supabase
-      .from('extensions')
-      .update({ isActive: !isActive })
-      .eq('id', id)
-      .select()
-    if (!error && data) {
-      setExtension((prev: Extension[]) =>
-        prev.map(ext => ext.id === id ? data[0] : ext)
-      )
-    }
-  }
-
-  const removeExtension = async (id: string) => {
-    const { error } = await supabase
-      .from('extensions')
-      .delete()
-      .eq('id', id)
-    if (!error) {
-      setExtension((prev: Extension[]) => prev.filter(ext => ext.id !== id))
-    }
-  }
 
   const filteredExtensions = extension.filter((ext: Extension) => {
     const matchesFilter =
@@ -74,8 +51,7 @@ const ExtensionPage = ({
           <ExtensionCard
             key={ext.id}
             extension={ext}
-            onToggle={() => toggleExtension(ext.id, ext.isActive)}
-            onRemove={() => removeExtension(ext.id)}
+            setExtension={setExtension}
           />
         ))}
       </div>

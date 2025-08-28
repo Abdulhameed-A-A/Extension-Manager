@@ -5,7 +5,7 @@ import { getPublicUrl, uploadFile } from "../services/uploads"
 import toast from 'react-hot-toast'
 
 
-interface AddExtensionFormProps {
+interface AddExtensionFormany {
   onAdded: (newExtension: Extension) => void
   onCancel: () => void
 }
@@ -18,7 +18,7 @@ interface FormData {
   isActive: boolean
 }
 
-const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormProps) => {
+const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormany) => {
   const [form, setForm] = useState<FormData>({
     logoPreviewUrl: "",
     name: "",
