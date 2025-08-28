@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
 import darkIcon from "/assets/images/icon-moon.svg"
 import lightIcon from "/assets/images/icon-sun.svg"
 
-const ExtensionHeader = ({searchTerm, setSearchTerm, darkMode, setDarkMode}: any) => {
+const ExtensionHeader = ({ searchTerm, setSearchTerm }: any) => {
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem("darkMode");
+    return saved !== null ? JSON.parse(saved) : true;
+  })
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+
+    const root = document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark')
+    } else {
+      root.classList.remove('dark')
+    }
+  }, [darkMode])
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center md:mb-10 mb-7 gap-5">

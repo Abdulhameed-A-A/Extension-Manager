@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react"
-import { supabase } from "../supabaseClient"
+import { supabase } from "../services/supabaseClient"
 import { type Extension } from "../types/extension"
 import { getPublicUrl, uploadFile } from "../services/uploads"
 import toast from 'react-hot-toast'

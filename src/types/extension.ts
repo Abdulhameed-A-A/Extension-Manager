@@ -1,12 +1,9 @@
-export interface ExtensionRaw {
+export interface Extension {
+  id: string,
   logo: string,
   name: string,
   description: string,
   isActive: boolean
-}
-
-export interface Extension extends ExtensionRaw {
-  id: string
 }
 
 export type FilterType = "all" | "active" | "inactive"
