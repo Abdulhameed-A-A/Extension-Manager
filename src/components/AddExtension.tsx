@@ -30,10 +30,8 @@ const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
     if (type === "file") {
-      console.log("It is of the type file")
       const file = (e.target as HTMLInputElement).files?.[0];
       if (file) {
-        console.log("The file actually existed", file)
         setForm((prev: FormData) => ({
           ...prev,
           logo: file,
@@ -101,7 +99,7 @@ const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormProps) => {
           name="name"
           value={form.name}
           onChange={handleChange}
-          className="w-full px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+          className="w-full px-3 py-2 rounded-md bg-gray-200 outline-gray-400 dark:outline-red-500 dark:bg-gray-700 text-black dark:text-white"
           required
         />
       </div>
@@ -112,7 +110,7 @@ const AddExtensionForm = ({ onAdded, onCancel }: AddExtensionFormProps) => {
           name="description"
           value={form.description}
           onChange={handleChange}
-          className="w-full px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+          className="w-full px-3 py-2 rounded-md bg-gray-200 outline-gray-400 dark:outline-black dark:bg-gray-700 scroll-smooth text-black dark:text-white"
           required
         />
       </div>

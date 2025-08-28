@@ -8,3 +8,5 @@ export interface ExtensionRaw {
 export interface Extension extends ExtensionRaw {
   id: string
 }
+
+export type FilterType = "all" | "active" | "inactive"

@@ -5,14 +5,15 @@ import darkIcon from "/assets/images/icon-moon.svg"
 import lightIcon from "/assets/images/icon-sun.svg"
 import { supabase } from "./supabaseClient"
 import AddExtensionForm from "./components/AddExtension"
-import {Toaster} from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
+import FilteredButton from "./components/FilteredButtons"
+import { type FilterType } from "./types/extension"
 
-type FilterType = "all" | "active" | "inactive"
 
 function App() {
   const [extension, setExtension] = useState<Extension[]>([])
-  const [filter, setFilter] = useState<FilterType>("all")
   const [searchTerm, setSearchTerm] = useState<string>("")
+  const [filter, setFilter] = useState<FilterType>("all")
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem("darkMode");
     return saved !== null ? JSON.parse(saved) : true;
@@ -119,30 +120,12 @@ function App() {
 
 
         {/* Filtered Buttons */}
-        <div className="flex justify-center md:justify-start gap-3 mb-8">
-          {(["all", "active", "inactive"] as FilterType[]).map(type => (
-            <button
-              key={type}
-              onClick={() => setFilter(type)}
-              className={`px-3 py-1 rounded-full text-center cursor-pointer text-sm transition ${filter === type
-                ? "bg-red-500 text-white"
-                : "bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600"
-                }`}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
-          ))}
-
-          <button
-            onClick={() => setShowAddForm(true)}
-            className={`px-3 py-1 rounded-full cursor-pointer text-sm transition ${showAddForm
-                ? "bg-red-500 text-white"
-                : "bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-black dark:text-white"
-              }`}
-          >
-            <span className="hidden md:block">Add Extensions</span> <span className="md:hidden">Add Ext</span>
-          </button>
-        </div>
+        <FilteredButton 
+          showAddForm={showAddForm} 
+          setShowAddForm={setShowAddForm} 
+          filter={filter} 
+          setFilter={setFilter}
+        />
 
         {/* Extension Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
